@@ -1,0 +1,32 @@
+@font-face {
+	font-family: 'AUdimatItalic';
+	src: url('audimat-italic-webfont.eot');
+	src: local('☺'), url('audimat-italic-webfont.woff') format('woff'), url('audimat-italic-webfont.otf') format('opentype'), url('audimat-italic-webfont.svg#webfont4xsyCDAS') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'AUdimatBoldItalic';
+	src: url('audimat-bolditalic-webfont.eot');
+	src: local('☺'), url('audimat-bolditalic-webfont.woff') format('woff'), url('audimat-bolditalic-webfont.otf') format('opentype'), url('audimat-bolditalic-webfont.svg#webfont4xsyCDAS') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'AUdimatBold';
+	src: url('audimat-bold-webfont.eot');
+	src: local('☺'), url('audimat-bold-webfont.woff') format('woff'), url('audimat-bold-webfont.otf') format('opentype'), url('audimat-bold-webfont.svg#webfont4xsyCDAS') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'AUdimatRegular';
+	src: url('audimat-regular-webfont.eot');
+	src: local('AUdimat'), url('audimat-regular-webfont.woff') format('woff'), url('audimat-regular-webfont.otf') format('opentype'), url('audimat-regular-webfont.svg#webfont4xsyCDAS') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+

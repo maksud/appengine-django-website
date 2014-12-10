@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+    <title>Maksud's World</title>
+    <link href="css/960/reset.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/960/960.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/screen.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="jquery-ui/jquery-ui.min.css" media="screen" rel="stylesheet" type="text/css">
+    <style>
+		.node {
+            stroke: #fff;
+            stroke-width: 1px;
+        }
+
+        .link {
+            fill: none;
+            stroke: #bbb;
+        }
+
+        .my-textfield {
+            font: inherit;
+            color: inherit;
+            text-align: inherit;
+            outline: none;
+            cursor: text;
+        }
+
+        input:required {
+            border: 1px solid red;
+        }
+
+        .loginform ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .loginform li {
+            display: inline;
+            float: left;
+        }
+
+        label {
+            display: block;
+            color: #999;
+        }
+
+        .cf:before, .cf:after {
+            content: "";
+            display: table;
+        }
+
+        .cf:after {
+            clear: both;
+        }
+
+        .cf {
+            *zoom: 1;
+        }
+
+        :focus {
+            outline: 0;
+        }
+
+        .loginform input:not([type=submit]):not([type=button]) {
+            padding: 5px;
+            margin-right: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+            box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(250, 250, 250, 0.5);
+            width: 125px;
+        }
+
+        .loginform input[type=submit], .loginform input[type=button]{
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            background: #64c8ef; /* Old browsers */
+            background: -moz-linear-gradient(top, #64c8ef 0%, #00a2e2 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#64c8ef), color-stop(100%,#00a2e2)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, #64c8ef 0%,#00a2e2 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, #64c8ef 0%,#00a2e2 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, #64c8ef 0%,#00a2e2 100%); /* IE10+ */
+            background: linear-gradient(to bottom, #64c8ef 0%,#00a2e2 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#64c8ef', endColorstr='#00a2e2',GradientType=0 ); /* IE6-9 */
+            color: #fff;
+            padding: 5px 15px;
+            margin-right: 0;
+            margin-top: 23px;
+            border-radius: 3px;
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <script src="js/externalLinks.js" type="text/javascript"></script>
+    <script src="js/css3-mediaqueries.js" type="text/javascript"></script>
+    <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="js/search.js" type="text/javascript"></script>
+    <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+    <script src="js/mygraph.js" type="text/javascript"></script><!--[if lte IE 8]>
+            <script src="js/html5.js" type="text/javascript"></script>
+        <![endif]-->
+
+    <script type="text/javascript">
+	var n = 0;
+    //Static dataset
+    var degDist = new Array();
+    var weights = new Array();
+    var nodeDegree = new Array();
+
+    var graph;
+    ///
+    function calcDegDist(nodeDegree) {
+        var deg_dist = new Array();
+
+        var arrayLength = nodeDegree.length;
+        for (var i = 0; i < arrayLength; i++) {
+            var degree = nodeDegree[i];
+            if (degree in deg_dist) {
+                deg_dist[degree]++;
+            }
+            else {
+                deg_dist[degree] = 1;
+            }
+        }
+
+        degDist = new Array();
+        for (var j in deg_dist) {
+            var a = [j, deg_dist[j]];
+            degDist.push(a);
+        }
+    }
+
+    function RiemannZeta(gamma, counter)
+    {
+        var rz = 0.0;
+        for (i = 1; i < counter; i++)
+            rz += Math.pow(i, -1 * gamma);
+        return rz;
+    }
+
+    function getMaxDegree(s, e, CONST_C, gamma)
+    {
+        var dist = e - s + 1;
+
+        for (; dist > 0;)
+        {
+            if (e - s == 1)
+                return s;
+
+            dist = dist / 2;
+
+            var n_halfs = Math.floor(Math.round(CONST_C * Math.pow(s + dist, -1 * gamma)));
+            var n_halfe = Math.floor(Math.round(CONST_C * Math.pow(e - dist, -1 * gamma)));
+
+            if (n_halfs >= 0.5)
+                s = s + dist;
+            else if (n_halfs <= 0)
+                s = s - dist >= 0 ? s - dist : 0;
+
+            if (n_halfe <= 0)
+                e = e - dist;
+            else if (n_halfe >= 0.5)
+                e = e + dist;
+        }
+        return s;
+    }
+
+    function generatePowerLawWeights(N, W, gamma, dMin, multiplier)
+    {
+        var ZETA = RiemannZeta(gamma, 100000) - RiemannZeta(gamma, dMin);
+        var E = 0;
+        //        double CONST_C = N / 1.2742599758945060953189136054637673957173006447062846;
+        var CONST_C = N / ZETA;
+        var i = 0;
+        var MAX_DEGREE = Math.floor(getMaxDegree(0, N, CONST_C, gamma));
+
+        var act_max = 0;
+
+        var degree = MAX_DEGREE;
+        do
+        {
+            var n_d = Math.round(CONST_C * Math.pow(degree, -1 * gamma)) * multiplier;
+            if (n_d > 0)
+                act_max = act_max < degree ? degree : act_max;
+            for (var j = 0; j < n_d && i < N; j++)
+            {
+                W[i] = degree;
+                i++;
+                E += degree;
+            }
+                degree--;
+    	} while (i < N && degree >= dMin);
+
+        //filler
+        for (; i < N; i++)
+        {
+            W[i] = dMin;
+            E += dMin;
+        }
+	}
+	function generateLinearWeights(N, min, max, w)
+    {
+        var B = N / (max - min + 1);
+        var j = 0;
+        for (var i = 0; i < max - min + 1; i++)
+        {
+            var end = Math.round((B * (i + 1)));
+            if (end > N)
+                end = N;
+            for (; j < end; j++)
+            {
+                w[N - 1 - j] = min + i;
+            }
+        }
+    }
+    function generateConstWeights(N, W, w)
+    {
+        for (i = 0; i < N; i++)
+            w[i] = W;
+    }
+
+
+    function initGraph() {
+        graph = new Graph("#graph", 700, 700);
+    }
+
+    function drawGraph(_n, _m, _w) {
+        n = _w.length;
+        m = _m;
+        var W = _w;
+
+        graph.removeAllLinks();
+        graph.removeAllNodes();
+
+        var parent = [];
+        var nodeList = [];
+
+        var initialized = false;
+
+        function unhideRun() {
+            $("#run").show();
+        }
+
+
+
+
+	    var u_cl;
+	    var v_cl;
+	    var p_cl;
+	    var delta = 0;
+	    var epsilon = 0.0000000000000000000001;
+	    var S = 0.0;
+	    for (i = 0; i < n; i++)		    {
+	        S += W[i];
+	    }
+
+		var rho = 1.0 / S;
+		var factor;
+
+	    function initCL() {
+	        if (!initialized) {
+	            for (i = 0; i < n; i++) {
+	                graph.addNode(i.toString(), i);
+	                nodeDegree[i] = 0;
+	            }
+	            initialized = true;
+	            u_cl = 0;
+	            v_cl = 1;
+	        }
+	    }
+
+	    function clModel(){
+    		if(u_cl>n-2)
+    			return;
+
+		    // for (u = 0; u <= n - 2; u++)
+		    {
+		        // var v = u + 1;
+
+		        var factor = W[u_cl] * rho;
+		        p_cl = factor * W[v_cl];
+		        if (p_cl > 1)
+		            p_cl = 1.0;
+
+		        while (v_cl < n && p_cl > 0.0)
+		        {
+		            if (p_cl != 1)
+		            {
+		                var r = Math.random();
+		                r = r == 0 ? epsilon : r;
+		                delta = Math.floor(Math.log(r) / Math.log(1 - p_cl));
+		                v_cl = v_cl + delta;
+		            }
+		            if (v_cl < n)
+		            {
+		                var q = Math.min(W[u_cl] * W[v_cl] * rho, 1.0);
+		                var r = Math.random();
+		                r = r == 0 ? epsilon : r;
+
+		                if (r < q / p_cl)
+		                {
+							graph.addLink(u_cl.toString(), v_cl.toString(),'0');
+							nodeDegree[u_cl]++;
+							nodeDegree[v_cl]++;
+		                }
+		                p_cl = q;
+		                v_cl = v_cl + 1;
+		            }
+		        }
+				u_cl++;
+				v_cl = u_cl + 1;
+		    }
+
+		    calcDegDist(nodeDegree);
+
+	        setTimeout(function () {
+				clModel();
+			}, 250); /**/
+		}
+        initCL();
+        clModel();
+ 	}
+    </script>
+    <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+		google.load("visualization", "1", { packages: ["corechart"] });
+        google.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number');
+            data.addColumn('number');
+            data.addColumn('number');
+
+            var options = {
+                legend: 'none',
+                // colors: ['#087037'],
+                // pointShape: 'star',
+                pointSize: 5,
+                // hAxis: { logScale: true },
+                // vAxis: { logScale: true },
+                animation: {
+                    duration: 200,
+                    easing: 'inAndOut',
+                },
+                title: "Degree Distribution (log-log)"
+            };
+
+            var chart = new google.visualization.ScatterChart(document.getElementById('animatedshapes_div'));
+            chart.draw(data, options);
+
+            function randomWalk() {
+                //Clear Data
+                data.removeRows(0, data.getNumberOfRows());
+                for (var j in degDist) {
+                    var a = [Number(degDist[j][0]), Number(degDist[j][1]), 0];
+                    data.addRow(a);
+                }
+                chart.draw(data, options);
+            }
+
+            window.setInterval(randomWalk, 1000);
+        }
+    </script>
+    <script type="text/javascript">
+		$(document).ready(function () {
+            initGraph();
+
+            function writeWeightSequences(wArray){
+            	$('#weight-seq').val('');
+            	var val='';
+		    	for (var i = 0; i < wArray.length ; i++) {
+		    		  val += wArray[i].toString() + "\t";
+		    	};
+		    	$('#weight-seq').val(val);
+		    	calcDegDist(wArray);
+            }
+
+            $("#generate-pl").click(function (){
+				var nNodes = Number($("#in_n").val());
+                var gamma = Number($("#in_g").val());
+            	weights = new Array();
+            	generatePowerLawWeights(nNodes, weights, gamma, 1, 1);
+            	writeWeightSequences(weights);
+            });
+
+            $("#generate-lin").click(function (){
+				var nNodes = Number($("#in_n2").val());
+                var dMin = Number($("#in_dmin").val());
+                var dMax = Number($("#in_dmax").val());
+            	weights = new Array();
+            	generateLinearWeights(nNodes, dMin, dMax, weights);
+            	writeWeightSequences(weights);
+            });
+
+            $("#generate-const").click(function (){
+				var nNodes = Number($("#in_n3").val());
+                var d = Number($("#in_d").val());
+            	weights = new Array();
+            	generateConstWeights(nNodes, d, weights);
+            	writeWeightSequences(weights);
+            });
+            
+            $("#generate").submit(function (event) {
+                var wText = $('#weight-seq').val();
+                var w = wText.trim().replace(/\s/g, " ").split(" ").sort(function(a, b){return Number(b)-Number(a)});
+                
+                var W = new Array();
+                for(i = 0; i < w.length; i++){
+                	W[i] = Number(w[i]);
+                }
+                writeWeightSequences(W);
+
+                // if (nNodes > mEdges) {
+                	drawGraph(0, 0, W);
+                // }
+                // else {
+                    // alert("Number of nodes must be greater than m!")
+                // }
+
+                // $("#run").hide();
+
+                event.preventDefault();
+            });
+
+            $("#weight-seq").resizable({
+				handles: "se"
+			});
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <div class="container_16">
+            <div class="grid_16" id="header-row-1">
+                <div class="grid_7 alpha">
+                    <a href="/"><img alt="maksudul alam" src="/images/maksud2.png"></a>
+                </div>
+
+                <div class="grid_9 omega">
+                    <div class="fright" id="ms_h_menu">
+                        <ul>
+                            <li id="ms_h_bio">
+                                <a class="{{ contents.h_bio }}" href="/bio" title="Biography">Bio</a>
+                            </li>
+
+                            <li id="ms_h_academics">
+                                <a class="{{ contents.h_academics }}" href="/academics" title="Academic Background">Bio</a>
+                            </li>
+
+                            <li id="ms_h_research">
+                                <a class="{{ contents.h_research }}" href="/research" title="Research Experience">Research</a>
+                            </li>
+
+                            <li id="ms_h_experience">
+                                <a class="{{ contents.h_works }}" href="/works" title="Work Experience">Experience</a>
+                            </li>
+
+                            <li id="ms_h_gallery">
+                                <a class="{{ contents.h_gallery }}" href="/gallery" title="Gallery">Gallery</a>
+                            </li>
+
+                            <li id="ms_h_contact">
+                                <a class="{{ contents.h_contact }}" href="/contact" title="Contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid_16">
+                <h4 class="pagename">Chung-Lu Model</h4>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div id="content">
+        	<div class="container_16">
+            	<div class="grid_10 alpha">
+            		<section class="loginform cf">
+                		<form accept-charset="utf-8" action="#" id="generate" method="get" name="generate">
+		                    <textarea  id="weight-seq" rows="5" cols="20" style="width:100%"></textarea>
+		                 	<ul>
+		                        <li><label for="in_n">#of nodes</label> <input id="in_n" name="in_n" placeholder="100" required="" type="number" value="100"></li>
+		                        <li><label for="in_g">gamma</label> <input id="in_g" name="in_g" placeholder="2.7" required="" type="decimal" value="2.7"></li>
+		                        <li><input id="generate-pl" type="button" value="Power Law"></li>
+		                    </ul>
+		                    <div class="clear"></div>
+		                    <ul>
+		                        <li><label for="in_n2">#of nodes</label> <input id="in_n2" name="in_n2" placeholder="100" required="" type="number" value="100"></li>
+		                        <li><label for="in_dmin">Minimum Degree</label> <input id="in_dmin" name="in_dmin" placeholder="1" required="" type="decimal" value="1"></li>
+		                        <li><label for="in_dmax">Maximum Degree</label> <input id="in_dmax" name="in_dmax" placeholder="101" required="" type="decimal" value="100"></li>
+		                        <li><input id="generate-lin" type="button" value="Linear"></li>
+		                    </ul>
+		                    <div class="clear"></div>
+		                    <ul>
+		                        <li><label for="in_n3">#of nodes</label> <input id="in_n3" name="in_n3" placeholder="100" required="" type="number" value="100"></li>
+		                        <li><label for="in_d">Average Weight</label> <input id="in_d" name="in_d" placeholder="1" required="" type="decimal" value="1"></li>
+		                        <li><input id="generate-const" type="button" value="Constant"></li>
+		                    </ul>
+		                    <div class="clear"></div>
+		                    <ul>
+		                    	<li><input id="run" type="submit" value="Generate Graph"></li>
+		                    </ul>
+		                </form>
+	            	</section>
+            	</div>
+            	<div id="animatedshapes_div"  class="grid_6 omega"></div>
+            	<div id="graph" class="grid_16 alpha omega"></div>
+            	<div class="clear"></div>
+        	</div>
+    	</div>
+    </div>
+
+    <div id="footer">
+        <div class="container_12">
+            <div class="grid_7">
+                <p>&copy; 2014 &mdash; Maksudul Alam</p>
+            </div>
+
+            <div class="grid_5">
+                <p class="rightalign">
+                	<span class="divider">/</span> <a href="/">Home</a> <span class="divider">&middot;</span> 
+                	<a class="link-pdf" href="/document/maksud-cv.pdf">CV</a> <span class="divider">&middot;</span> <a href="/me/bio">Bio</a> 
+                	<span class="divider">&middot;</span> <a href="/research">Research</a> <span class="divider">&middot;</span> <a href=
+                "/works">Projects</a> <span class="divider">&middot;</span> <a href="/contact">Contact</a> <span class="divider">/</span></p>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</body>
+</html>

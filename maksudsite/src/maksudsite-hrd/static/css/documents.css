@@ -1,0 +1,346 @@
+
+/* reset styles
+--------------------------------------------- */
+
+ol, ul {
+	list-style: none;
+	}
+
+/* links */
+
+a:link, a:visited {
+	color: #4083a9;
+	outline: none;
+	text-decoration: none;
+	}
+a:hover {
+	text-decoration: none;
+	color: #205f82;
+	}
+
+/* custom selection colors */
+
+::-moz-selection {
+	color: #fff;
+	color: rgba(255,255,255,.85);
+	background: #ea4c88;
+	}
+::selection {
+	color: #fff;
+	color: rgba(255,255,255,.85);
+	background: #ea4c88;
+	}
+
+
+#main {
+/*    float: left;*/
+/*    width: 700px;*/
+    font-size: 1em;
+}
+
+/* subnav tabs */
+
+#wrap ul.tabs {
+    margin: 0 0 15px 0;
+    padding: 0;
+    font-size: .8em;
+    line-height: 1;
+    border-bottom: 1px solid rgba(255,255,255,.9);
+    background: url(http://dribbble.com/images/border-2px.gif) repeat-x bottom left;
+}
+#wrap ul.tabs:after {
+	content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    }
+#wrap ul.tabs li {
+	float: left;
+	margin: 0 20px 0 0;
+	font-weight: bold;
+	line-height: 1;
+	text-transform: uppercase;
+	color: #aaa;
+	}
+#wrap ul.tabs li.last {
+	margin-right: 0;
+	}
+#wrap ul.tabs li span.meta {
+	font-weight: normal;
+	line-height: .9em;
+	color: #aaa;
+	}
+#wrap ul.tabs li a,
+#wrap ul.tabs li span.empty {
+	float: left;
+	padding: 0 0 8px 0;
+	text-decoration: none;
+	}
+#wrap ul.tabs li a span.meta {
+	color: rgba(64,131,169,.8);
+	}
+#wrap ul.tabs li a:hover {
+	background: url(http://dribbble.com/images/tab-over-2px.gif) repeat-x bottom left;
+	}
+#wrap ul.tabs li a:hover,
+#wrap ul.tabs li a:hover span.meta {
+	color: #205f82;
+	}
+#wrap ul.tabs li.unpublished a {
+	color: #999;
+	}
+#wrap ul.tabs li.unpublished a span.meta {
+	color: #bbb;
+	}
+#wrap ul.tabs li.active a,
+#wrap ul.tabs li.active span.empty {
+	color: #333;
+	background: url(http://dribbble.com/images/tab-on-2px.gif) repeat-x bottom left;
+	}
+#wrap ul.tabs li.active a span.meta {
+	color: #777;
+	}
+ul.tabs li a span.notify {
+	padding: 0 8px;
+	text-transform: none;
+	font-weight: bold;
+	color: #fff;
+	background: #ea4c88;
+	-webkit-border-radius: 14px;
+	-moz-border-radius: 14px;
+	border-radius: 14px;
+	}
+
+/* tabs with bigger numbers */
+
+#wrap ul.tabs-numbers {
+	margin-top: -.2em;
+	font-size: 1em;
+	}
+#wrap ul.tabs li span.meta {
+	font-size: .8em;
+	}
+
+/* page */
+
+div.page {
+	padding: 20px 0 0 0;
+	font-weight: bold;
+	text-align: center;
+	border-top: 2px solid #ccc;
+	}
+div.page a {
+	margin: 0;
+	padding: 7px 12px;
+	font-size: 1em;
+	line-height: 1;
+	text-decoration: none;
+	color: #666;
+	background: #d3d3d3 url(http://dribbble.com/images/glass-30.png) repeat-x 0 50%;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	}
+
+
+/* pixel summary in upper sidebar */
+#wrap ul.tabs-numbers {
+    margin-top: -.2em;
+    font-size: 1em;
+}
+/* data tables
+---------------------------------------------------------- */
+table.data {
+	width: 100%;
+	margin: 0 0 25px 0;
+	padding: 0;
+	border-collapse: collapse;
+	}
+table.data th, table.data td {
+	margin: 0;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ddd;
+	}
+table.data td.user {
+	white-space: nowrap;
+	}
+table.data td.num {
+	text-align: right;
+	}
+table.data th.num {
+	text-align: right;
+	}
+table.data td.date {
+	font-size: .9em;
+	color: #777;
+	}
+table.data td.follow div.follow-prompt {
+	float: right;
+	font-size: .9em;
+	line-height: 12px;
+	margin: 0;
+	}
+table.data td.follow div.follow-prompt form {
+	margin: 0;
+	padding: 0;
+	}
+table.data td.follow a.follow,
+table.data td.follow a.following {
+	padding: 6px;
+	width: 12px;
+	height: 12px;
+	margin-right: 0;
+	}
+table.data td.follow a.follow span,
+table.data td.follow a.following span {
+	float: left;
+	padding-left: 12px;
+	text-indent: -999em;
+	}
+table.data tr:last-child th, table.data tr:last-child td {
+	border-bottom: none;
+	}
+table.data th {
+	padding: 0 10px 5px 10px;
+	text-align: left;
+	}
+table.data h4.vcard {
+	font-size: 1em;
+	line-height: 1.2;
+	margin-bottom: 0;
+	}
+table.data h4.vcard img {
+	width: 24px;
+	}
+table.data h4.vcard span.user-meta {
+	display: block;
+	margin: 0;
+	padding: 0;
+	font-size: .75em;
+	font-weight: normal;
+	line-height: 1.5;
+	color: #999;
+	}
+table.data td blockquote {
+	margin-left: 0;
+	}
+table.data td a.action {
+	font-size: .9em;
+	}
+table.data td em.meta {
+	display: block;
+	font-size: .9em;
+	line-height: 1.4;
+	font-style: normal;
+	color: #999;
+	}
+table.users-table tr:hover {
+	background: #fff;
+	background: rgba(255,255,255,.5);
+	}
+table.users-table tr:last-child td {
+	border: none;
+	}
+table.users-table td.num {
+	font-size: 1em;
+	color: #777;
+	}
+table.users-table td.num strong {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #333;
+	}
+table.users-table td.num a {
+	padding: 5px 10px;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #fff;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	}
+table.users-table td.num a:hover {
+	color: #fff;
+	text-shadow: none;
+	background: #ea4c88 url(/images/glass-light.png) repeat-x 0 50%;
+	}
+table.users-table td.num em {
+	font-size: .7em;
+	font-weight: normal;
+	font-style: normal;
+	color: #777;
+	}
+table.users-table th {
+	padding: 8px 20px;
+	font-size: .8em;
+	line-height: 1.2;
+	font-weight: normal;
+	color: #999;
+	border-color: #fff;
+	background: url(/images/table-header-fade.png) repeat-x 0 100%;
+	}
+table.users-table th.list-title {
+	padding-left: 10px;
+	}
+table.users-table td {
+	vertical-align: middle;
+	}
+table.pixel-table th,
+table.pixel-table td {
+	padding: 6px 0;
+	font-size: .8em;
+	color: #777;
+	}
+table.pixel-table td {
+	padding-left: 8px;
+	color: #333;
+	}
+table.pixel-table tr.grouped th,
+table.pixel-table tr.grouped td {
+	padding-bottom: 0;
+	border-bottom: none;
+	}
+table.users-table td.passed {
+	padding-right: 34px;
+	background: url(/images/icon-pass.png) no-repeat 100% 50%;
+	}
+table.users-table td.scored {
+	padding-right: 34px;
+	background: url(/images/icon-pass-rev.png) no-repeat 100% 50%;
+	}
+table.users-table td a.follow,
+table.users-table td a.following {
+	margin: 0;
+	}
+/* profile link */
+
+h4.vcard {
+	margin: 0 0 20px 0;
+	font-size: 1.1em;
+	font-weight: bold;
+	line-height: 1.6em;
+	}
+h4.vcard a img {
+	float: left;
+	width: 32px;
+	margin: 0 6px 0 0;
+	vertical-align: middle;
+	padding: 3px;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	}
+h4.vcard a:hover img {
+	border-color: transparent;
+	background: transparent;
+	}
+h4.vcard em {
+	display: block;
+	margin: 0 0 0 0;
+	font-size: .8em;
+	line-height: 1.4em;
+	font-weight: normal;
+	font-style: normal;
+	color: #999;
+	}

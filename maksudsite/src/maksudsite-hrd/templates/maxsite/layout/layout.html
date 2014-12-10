@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+        <title>
+            {% block title %}
+            Maksud's World
+            {% endblock %}
+        </title>
+
+        <link href="/css/960/reset.css" media="screen" rel="stylesheet" type="text/css" >
+        <link href="/css/960/960.css" media="screen" rel="stylesheet" type="text/css" >
+        <link href="/css/screen.css" media="screen" rel="stylesheet" type="text/css" >
+
+        {% block css %}
+        {% endblock %}
+
+        <script src="/js/externalLinks.js" type="text/javascript"></script>
+        <script src="/js/css3-mediaqueries.js" type="text/javascript"></script>
+        <script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+        <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="/js/search.js" type="text/javascript"></script>
+
+        
+
+        {% block js %}
+        {% endblock %}
+        <!--[if lte IE 8]>
+            <script src="/js/html5.js" type="text/javascript"></script>
+        <![endif]-->
+
+
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <div class="container_16">
+                    <div id="header-row-1" class="grid_16" >
+                        <div class="grid_7 alpha">
+                            <a href="/" ><img src="/images/maksud2.png" alt="maksudul alam" /></a>
+                        </div>
+                        <div class="grid_9 omega">
+                            <div id="ms_h_menu" class="fright">
+                                <ul>
+                                    <li id="ms_h_bio"><a class="{{ contents.h_bio }}" href="/bio" title="Biography">Bio</a></li>
+                                    <li id="ms_h_academics"><a class="{{ contents.h_academics }}" href="/academics" title="Academic Background">Bio</a></li>
+                                    <li id="ms_h_research"><a class="{{ contents.h_research }}" href="/research" title="Research Experience" >Research</a></li>
+                                    <li id="ms_h_experience"><a class="{{ contents.h_works }}" href="/works" title="Work Experience">Experience</a></li>
+                                    <li id="ms_h_gallery"><a class="{{ contents.h_gallery }}" href="/gallery" title="Gallery">Gallery</a></li>
+                                    <li id="ms_h_contact"><a class="{{ contents.h_contact }}" href="/contact" title="Contact">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--div class="grid_4 omega">
+                            <div id="holder">
+                                <form target="_blank" method="post" action="/search/">
+                                    <fieldset>
+                                        <input type="text" name="search" id="movieName" class="defaultText ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+                                    </fieldset>
+                                    <a href="#" class="button">Submit</a>
+                                </form>
+                            </div>      
+                        </div-->
+                    </div>
+                    <div class="grid_16">
+                        <h4 class="pagename">{{ contents.pagename }}&nbsp;</h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>            
+            </div>
+            <div id="main-content">
+            <div id="content">
+                {% block contents %}
+                {% endblock %}
+            </div>
+        </div>
+            <div class="push"></div>
+        </div>
+        <div id="footer" >
+            <div class="container_12">
+                <div class="grid_7">
+                    <p>
+                        &copy; {{ contents.year }} &mdash;
+                        Maksudul Alam
+						{% if contents.edit %}
+	                    	<a href="/myadmin/contents/update?id={{contents.cid}}">Edit Content</a>
+	                    	<a href="/myadmin/dashboard/flush_all?p={{contents.path}}">Flush</a>
+	                    {% endif %}	
+                    </p>                    
+                </div>
+                <div class="grid_5">
+                    <p class="rightalign"> 
+                        <span class="divider">/</span> 
+                        <a href="/">Home</a> <span class="divider">&middot;</span> 
+                        <a class="link-pdf" href="/document/maksud-cv.pdf">CV</a> <span class="divider">&middot;</span>
+                        <a href="/bio">Bio</a> <span class="divider">&middot;</span>
+                        <a href="/research">Research</a> <span class="divider">&middot;</span>
+                        <a href="/works">Projects</a> <span class="divider">&middot;</span>
+                        <a href="/contact">Contact</a> <span class="divider">/</span>
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        {% block endjs %}
+        <script type="text/javascript">
+        
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-7489245-7']);
+          _gaq.push(['_trackPageview']);
+        
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        
+        </script>        
+        {% endblock %}  
+    </body>
+</html>

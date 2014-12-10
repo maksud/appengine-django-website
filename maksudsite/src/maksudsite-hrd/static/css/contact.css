@@ -1,0 +1,150 @@
+.lineH,.line {
+	height: 3px;
+	width: 266px;
+	background: url('http://tutorialzine.com/wp-content/themes/tzine/img/line.png') no-repeat center top;
+	margin: 0 auto;
+	display: block
+}
+
+.padded30 {
+	padding: 20px 25px
+}
+
+.padded30 h4 {
+	font-size: 30px
+}
+
+.padded30 h4 b {
+	color: #888;
+	float: right
+}
+
+.padded30 .line {
+	margin: 15px auto
+}
+
+#comments li {
+	list-style: none;
+	border: 1px solid #EEE;
+	border: 1px solid rgba(40, 40, 40, 0.02);
+	margin-bottom: 15px;
+	background-color: #FAFAFA;
+	background-color: rgba(40, 40, 40, 0.02)
+}
+
+.comment-body {
+	background-color: #FCFCFC;
+	border: 2px solid white;
+	padding: 20px 25px 20px 105px;
+	position: relative
+}
+
+.comment-body .avatar {
+	-moz-box-shadow: 0 0 1px #bbb;
+	-webkit-box-shadow: 0 0 1px #bbb;
+	box-shadow: 0 0 1px #bbb;
+	border: 4px solid white;
+	float: left;
+	margin: 0 0 20px -85px;
+	position: relative
+}
+
+.comment-body p {
+	
+}
+
+.comment-body .url {
+	border: medium none
+}
+
+.comment-body .reply {
+	clear: both;
+	font-size: 11px;
+	margin-left: -85px
+}
+
+.comment-body .reply
+a {
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	background-color: #fff;
+	border: 1px solid #eee;
+	display: block;
+	font-size: 10px;
+	padding: 4px 8px;
+	width: 31px;
+	text-align: center
+}
+
+.reply a:hover {
+	border-color: #ddd
+}
+
+.comment-body pre {
+	background-color: #F5F5F5;
+	border-left: 2px solid #E0E0E0;
+	font-family: 'Consolas', 'Monaco', 'andale mono', 'lucida console', monospace;
+	font-size: 12px;
+	line-height: 1.4;
+	margin-bottom: 15px;
+	padding: 10px 15px
+}
+
+.comment-body>em {
+	bottom: 20px;
+	color: red;
+	font-size: 10px;
+	position: absolute;
+	right: 20px
+}
+
+.comment-body>br {
+	display: none
+}
+
+.comment-body blockquote pre {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0
+}
+
+.comment-meta {
+	font-size: 10px;
+	position: absolute;
+	right: 25px;
+	top: 25px
+}
+
+.comment-author {
+	height: 28px;
+	margin-bottom: 12px;
+	position: relative
+}
+
+.comment-author cite.fn {
+	font-size: 20px
+}
+
+.comment-author .says {
+	display: none
+}
+
+.comment.bypostauthor>.comment-body {
+	background: url('http://tutorialzine.com/wp-content/themes/tzine/img/author_comment_bg.gif') no-repeat right -12px #fcfcfc
+}
+
+.comment ol {
+	border-top: 1px solid #EEE;
+	border: 1px solid rgba(40, 40, 40, 0.05);
+	padding: 20px 20px 10px;
+	margin: 0 -1px -1px
+}
+
+.contentSection {
+	/*margin: 60px auto 120px;*/
+	/*width: 700px;*/
+	/*background-position: 700px 23px;*/
+	/*padding: 35px*/
+}

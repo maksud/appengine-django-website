@@ -1,0 +1,16 @@
+{% extends 'layout/layout.html' %}
+{% load maxhelper_filter %}
+
+{% block title %}
+Maksud's World - {{contents.title}}
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block contents %}
+{{ contents.content|safe }}
+{% endblock %}

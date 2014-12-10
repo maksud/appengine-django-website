@@ -1,0 +1,125 @@
+body {
+	font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+	font-size: 16px;
+	line-height: 1.5em;
+}
+
+/* FIX Headers */
+h4,h5 {
+	margin-bottom: 0.5em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: Skia, "Myriad Pro", Myriad, Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #222;
+}
+
+h1,h2,h3 {
+	text-shadow: 0px 1px 1px #555;
+}
+
+hr {
+	background: transparent;
+	color: #000;
+	border-color: rgba(0, 0, 0, 0.5);
+	border-style: none none solid none;
+	height: 0px;
+	clear: both;
+	display: block;
+	margin-top: 0;
+	margin-bottom: 23px;
+}
+
+hr.weight3 {
+	margin-bottom: 21px;
+	border-width: 3px;
+}
+
+hr.weight5 {
+	margin-bottom: 19px;
+	border-width: 5px;
+}
+
+.ul25 {
+	background: url("/images/ul25.png") repeat-x scroll 0 2px transparent;
+}
+
+.title {
+	font-weight: bold;
+	line-height: 23px;
+	text-align: justify;
+	border-bottom: 1px solid #aaa;
+	margin-bottom: 8px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+a {
+	color: #2200c1;
+	padding-left: 1px;
+	padding-right: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	font-family: "AUdimat", "AUdimatRegular", Skia, Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica,
+		Arial, sans-serif;
+	color: #2200c1;
+}
+
+a:visited {
+	color: #AD4747;
+}
+
+a:hover,a:focus {
+	color: #333;
+	/*background-color: #f2ff00;*/
+}
+
+p a,p a:visited {
+	border-bottom: 1px dotted #AAAAAA;
+	text-decoration: none;
+}
+
+p a:hover,p a:focus {
+	border-bottom: 1px solid;
+}
+
+em,b,strong,dfn {
+	color: #000;
+}
+
+black {
+	color: #000;
+}
+
+.smallfont {
+	font-size: 12px;
+}
+
+p {
+	text-align: justify;
+}
+
+.rightalign {
+	text-align: right;
+}
+
+.sherif {
+	font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+.sans {
+	font-family: Skia, Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.mono {
+	font-family: 'Consolas', 'Monaco', 'andale mono', 'lucida console', monospace;
+}
+
+.text-18
+{
+	font-size: 18px;
+	line-height: 1.5em;
+}

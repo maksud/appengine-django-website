@@ -1,0 +1,82 @@
+/* Index */
+#home_description_text
+{
+    /*background: url("/images/bg-white-10p.png");*/
+    padding: 8px;
+    padding-bottom: 7px;
+
+    font-size: 16px;
+    line-height: 24px;
+    /*text-shadow: 0 1px 1px #FFFFFF;*/
+    /*text-shadow: 0 0 1px #000;*/
+    /*text-shadow: 0 1px 3px #000;*/
+    /*color: #FFF;*/
+    text-align: justify;  
+
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+
+    border: 1px solid #fff;
+
+    -moz-box-shadow: 0px 0px 12px #fff;
+    -webkit-box-shadow: 0px 0px 12px #fff;
+    box-shadow: 0px 0px 12px #fff;
+}
+
+#home_description_text p
+{
+    text-shadow: 0 0 0px #000;
+    margin-bottom: 8px;
+}
+
+#home_description_text a
+{
+    font: inherit;
+
+    text-decoration: none;
+    background: url("/images/bg-black.png") repeat scroll 0 0 transparent;
+    /*color: #fff;*/
+
+    /*text-shadow: 0 0 1px #000;*/
+
+    padding: 2px 5px 4px;
+    margin-left: -5px;
+    margin-right: -5px;
+
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#home_description_text a:hover, #home_description_text a:focus
+{
+    text-decoration: none;
+    background: url("/images/bg-blacker.png") repeat scroll 0 0 transparent;
+    /*text-shadow: 0 1px 1px #000;*/
+    /*text-shadow: 0 0 0 #000;*/
+}
+
+#home_description_text a:visited
+{
+/*    color: #f2f2f2;*/
+    text-decoration: none;
+    /*text-shadow: 0 0 1px #000;*/
+}
+
+/* Bio */
+
+.my_biography_text p{
+    text-align: justify;
+    /*text-shadow: 0 0 1px #000;*/
+    line-height: 24px;
+}
+
+.my_biography_text a{
+    font: inherit;
+}
+
+.shadow1
+{
+    text-shadow: 0 0 1px #000;
+}

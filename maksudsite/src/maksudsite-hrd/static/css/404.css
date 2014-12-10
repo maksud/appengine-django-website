@@ -1,0 +1,27 @@
+.my404{
+    border: 2px solid black;
+}
+
+.my404 .heading{
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    font-size: 4em;
+
+    font-weight: bold;
+    line-height: 1;
+    padding: 20px;
+}
+
+.my404 .explanation{
+    color: crimson;
+    display: block;
+
+    font-size: 2em;
+    line-height: 1;
+    padding: 10px;
+    text-align: center;
+    text-shadow: 0 0 5px red;
+    margin: 2em auto;
+}

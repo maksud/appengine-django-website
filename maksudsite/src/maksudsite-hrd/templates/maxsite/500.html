@@ -1,0 +1,25 @@
+{% extends 'layout/layout.html' %}
+
+{% block title %}
+Maksud's World - 500
+{% endblock %}
+
+{% block contents %}
+<div class="container_16">
+    <div class="grid_16">
+        Bad. Bad. Server.
+    </div>
+
+    <div class="clear"></div>
+</div>
+{% endblock %}
+
+<div class="container_16">
+    <div class="grid_16">
+        {% block content %}
+            There was an error while handling your request.
+        {% endblock %}
+    </div>
+
+    <div class="clear"></div>
+</div>

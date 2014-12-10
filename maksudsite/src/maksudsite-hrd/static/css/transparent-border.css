@@ -1,0 +1,66 @@
+.tb_header  {
+    background:url("/images/tb/header.png") repeat-x scroll 0 -119px transparent;
+    height:20px;
+    margin:0 20px;
+}
+
+.tb_header-left {
+    background:url("/images/tb/corners.png") no-repeat scroll 0px 0 transparent;
+    float:left;
+    height:20px;
+    left:-20px;
+    position:relative;
+    width:20px;
+}
+
+.tb_header-right  {
+    background:url("/images/tb/corners.png") no-repeat scroll -20px 0 transparent;
+    float:right;
+    height:20px;
+    position:relative;
+    right:-20px;
+    width:20px;
+}
+
+.tb_content-wrapper  {
+    background:url("/images/tb/main.png") repeat scroll 0 0 transparent;
+}
+
+.tb_content  {
+    background-color:#FFFFFF;
+    margin:0 10px;
+    padding:16px 22px;
+}
+
+.tb_footer  {
+    background:url("/images/tb/header.png") repeat-x scroll 0 -139px transparent;
+    height:20px;
+    margin:0 20px;
+}
+
+.tb_footer-left  {
+    background:url("/images/tb/corners.png") no-repeat scroll 0px -20px transparent;
+    float:left;
+    height:20px;
+    left:-20px;
+    position:relative;
+    width:20px;
+}
+
+.tb_footer-right  {
+    background:url("/images/tb/corners.png") no-repeat scroll -20px -20px transparent;
+    float:right;
+    height:20px;
+    position:relative;
+    right:-20px;
+    width:20px;
+}
+
+.tb_border{
+    background:url("/images/tb/main.png") repeat scroll 0 0 transparent;
+    padding:10px;
+}
+
+.tb_border-content{
+    background:#fff ;
+}

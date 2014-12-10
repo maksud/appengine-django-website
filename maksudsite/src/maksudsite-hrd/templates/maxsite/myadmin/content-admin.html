@@ -1,0 +1,75 @@
+{% extends 'layout/admin-layout.html' %}
+{% load uni_form_tags %}
+
+
+
+
+{% block title %}
+Maksud's World - Contents
+{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="/css/uni.form/uni-form.css" type="text/css" />
+<link rel="stylesheet" href="/css/uni.form/default.uni-form.css" type="text/css" />
+<link rel="stylesheet" href="/css/documents.css" type="text/css" />
+{% endblock %}
+
+{% block js %}
+<script src="/js/uni-form.jquery.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block contents %}
+
+<div class="container_16">
+    <div class="grid_16 yui-skin-sam">
+        <h3>Content Management</h3>
+        <form method="POST" action="{% url admin_contents_update %}" enctype="multipart/form-data" class="uniForm">
+            <fieldset class="inlineLabels">
+                {% csrf_token %}
+                {{ form|as_uni_form }}
+                <div class="form_block">
+                    <div class="block">
+                        <input  class="fat-blue" type="submit" value="Submit" />
+                    </div>
+                    <div class="clear" ></div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    {% if tiles %}
+    <div id="wrap" class="grid_16">
+        <div id="main">
+            <h3>Existing Contents</h3>
+            <table cellspacing="0" class="data users-table">
+                <tbody>
+                    <tr>
+                        <th class="list-title">Module</th>
+                        <th class="num">Language</th>
+                        <th class="num">Url</th>
+                        <th></th>
+                    </tr>
+                    {% for field in tiles %}
+                    <tr>
+                        <td class="user">
+                            <h4 class="vcard">
+                                <a title="{{field.tile}}" rel="contact" class="url" href="/myadmin/contents/update?id={{field.id}}"><img src="/images/icons/tile.png" class="photo fn" alt="{{field.name}}">{{field.name}}</a>
+                                <span class="user-meta">
+					               Uploaded: {{field.date|date:"F j, Y h:i A"}}
+                                </span>
+                            </h4>
+                        </td>
+                        <td class="num followers">{{field.language}}</td>
+                        <td class="num followers">{{field.url}}</td>
+                        <td class="follow"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+    <div class="clear"></div>
+</div>
+{% endblock %}

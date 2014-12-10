@@ -1,0 +1,21 @@
+#search {
+    background:url("/images/bg/search-box.gif") no-repeat scroll left top transparent;
+    margin:2px 0 0;
+}
+
+#search input#search-text {
+    background:none repeat scroll 0 0 transparent;
+    border:medium none;
+    color:#BBBBBB;
+    font-family:Helvetica,Arial,sans-serif;
+    font-size:12px;
+    margin:0 3px 0 0;
+    padding:0 5px 0 23px;
+    width:158px;
+}
+
+#search input {
+    vertical-align: middle;
+}
+
+

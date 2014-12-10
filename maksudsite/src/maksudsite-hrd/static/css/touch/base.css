@@ -1,0 +1,6 @@
+body{margin:0;font-family:Helvetica;overflow-x:hidden;color:#333;-webkit-user-select:none;-webkit-text-size-adjust:none}
+a,u{cursor:pointer;display:inline;text-decoration:inherit;color:#3b5998}
+*[onclick]{cursor:pointer}
+.clear{clear:both}
+
+#bootloader_css_iphone_base_css { height: 42px; }

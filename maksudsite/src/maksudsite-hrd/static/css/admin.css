@@ -1,0 +1,151 @@
+#ms_h_menu ul li {
+	text-indent: 0;
+	padding: 0px 10px;
+}
+
+#ms_h_menu ul li a {
+	color: #f2f2f2;
+	font-weight: bold;
+	background-image: none;
+	text-transform: uppercase;
+	text-shadow: 0px 2px 10px black;
+}
+
+.latestPopularPosts ul {
+	background-color: #EEEEEE;
+	border: 1px solid #aaa;
+	margin: 0px;
+	padding: 5px 5px 0;
+	font-size: 16px;
+	line-height: 1;
+	
+	
+    font-family: "Myriad Pro", Corbel;
+}
+
+.latestPopularPosts li {
+	background-color: #FAFAFA;
+	border: 1px solid white;
+	list-style: none outside none;
+	margin-bottom: 6px;
+	outline: 1px solid #DDDDDD;
+	padding: 6px;
+}
+
+.latestPopularPosts a,.latestPopularPosts  a:active,.latestPopularPosts  a:visited {
+	color: #008DE6;
+	outline: medium none;
+	text-decoration: none;
+	padding: 0;
+}
+
+.latestPopularPosts a {
+	border: medium none;
+	color: #333;
+	display: block;
+	background: none;
+	text-shadow: 1px 1px 0 #FFFFFF;
+}
+
+.latestPopularPosts img {
+	border: 2px solid white;
+	float: left;
+	outline: 1px solid #E4E4E4;
+	height: 32px;
+	width: 32px;
+}
+
+.latestPopularPosts .title {
+	float: left;
+	padding: 0px 0 0 6px;
+	width: 232px;
+	font-size: 16px;
+	line-height: 1;
+	margin: 0;
+	font-weight: normal;
+	border: 0;
+}
+
+.subscribeSidebarBox {
+	-moz-border-radius: 10px 10px 10px 10px;
+	background-color: #FAFAFA;
+}
+
+a.subscribeSidebarBox {
+	border: medium none;
+	cursor: pointer;
+	display: block;
+	height: 60px;
+	margin-bottom: 8px;
+	position: relative;
+	width: 265px;
+}
+
+#sidebarSubscribe .icon {
+	background: url("http://cdn.tutorialzine.com/wp-content/themes/tzine/img/tzine_sprite.png") no-repeat scroll 0 0 transparent;
+	height: 45px;
+	left: 10px;
+	top: 10px;
+	width: 55px;
+}
+
+#subscribeRSS .icon {
+	background-position: 0 -50px;
+}
+
+#sidebarSubscribe span {
+	color: #6E6E6E;
+	display: block;
+	padding: 3px;
+	position: absolute;
+	text-shadow: 1px 1px 0 white;
+}
+
+#sidebarSubscribe .title {
+	font-size: 12px;
+	line-height: 16px;
+	border: 0;
+	left: 70px;
+	top: 8px;
+}
+
+#sidebarSubscribe .count {
+	font-size: 20px;
+	font-weight: bold;
+	left: 70px;
+	top: 23px;
+}
+
+ul.tools {
+	text-align: left;
+	border: 0;
+	background: transparent;
+	padding: 0;
+	
+	float: left;
+	width: 40px;
+}
+
+ul.tools li {
+	color: #AAAAAA;
+	display: inline;
+	float: right;
+	font-size: 0.78em;
+	line-height: 1em;
+	margin: 0 0 0 12px;
+	width: auto;
+	outline: none;
+	
+	padding: 0;
+	border: 0;
+}
+
+li.fav a,li.fav span {
+	background: url("http://dribbble.com/images/icon-hearts.gif") no-repeat scroll 0 0 transparent;
+	padding-left: 15px;
+}
+
+ul.tools li a {
+	color: #AAAAAA;
+	text-decoration: none;
+}

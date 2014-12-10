@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+        <title>
+        {% block title %}
+        Page title
+        {% endblock %}
+        </title>
+
+        <link href="/css/960/reset.css" media="screen" rel="stylesheet" type="text/css" >
+        <link href="/css/960/960.css" media="screen" rel="stylesheet" type="text/css" >
+        <link href="/css/screen.css" media="screen" rel="stylesheet" type="text/css" >
+
+
+        <script src="/js/externalLinks.js" type="text/javascript"></script>
+        <script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+        <!--[if lte IE 8]>
+            <script src="/js/html5.js" type="text/javascript"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="main-content">
+            <div id="header" class="container_16">
+                <div id="header-row-1" class="grid_16" >
+                    <div class="grid_7 alpha">
+                        <a href="/" ><img src="/images/maksud.png" alt="maksudul alam" /></a>
+                    </div>
+                    <div class="grid_9 omega">
+                        <div id="ms_h_menu" class="fright">
+                            <ul>
+                                <li id="ms_h_bio"><a class="" href="/me/bio" title="Biography">Bio</a></li>
+                                <li id="ms_h_academics"><a class="" href="/me/academics" title="Academic Background">Bio</a></li>
+                                <li id="ms_h_research"><a class="" href="/me/research" title="Research Experience" >Research</a></li>
+                                <li id="ms_h_experience"><a class="" href="/me/works" title="Work Experience">Experience</a></li>
+                                <li id="ms_h_gallery"><a class="" href="/me/gallery" title="Gallery">Gallery</a></li>
+                                <li id="ms_h_contact"><a class="" href="/me/contact" title="Contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid_16">
+                    <h3 class="pagename">{% block pagename %}{% endblock %}&nbsp;</h3>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="content">
+            {% block contents %}
+            {% endblock %}
+            </div>
+        </div>
+        <div id="footer" >
+            <div class="container_12">
+                <div class="grid_12">
+                    <p>
+                        &copy; 2010 &mdash;
+                        Md. Maksudul Alam
+                        <span class="divider">/</span> 
+                        <a href="/">Home</a> 
+                        <span class="divider">&middot;</span> 
+                        <a href="/me/bio">Bio</a> 
+                        <span class="divider">&middot;</span> <a href="/me/research">Research</a> <span class="divider">&middot;</span> <a href="/me/experience">Projects</a> <span class="divider">&middot;</span> <a href="/me/contact/">Contact</a> <span class="divider">/</span> </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </body>
+</html>

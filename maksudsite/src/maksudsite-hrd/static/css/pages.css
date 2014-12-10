@@ -1,0 +1,60 @@
+/* Index */
+#home_description_text
+{
+    font-size: 20px;
+    line-height: 32px;
+    text-align: justify;
+    padding: 16px;
+}
+
+#home_description_text p
+{
+    text-shadow: 0 1px 1px #888;
+    margin-bottom: 16px;
+}
+
+#home_web_links {
+    padding: 8px;
+    border: 1px solid #aaa;
+}
+
+#home_description_text a
+{
+    font-family: inherit;
+
+    text-decoration: none;
+    color: #000;
+
+    padding: 2px 5px 4px;
+    margin-left: -5px;
+    margin-right: -5px;
+
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border-bottom: 1px solid #ccc;
+}
+
+#home_description_text a:hover, #home_description_text a:focus
+{
+    text-decoration: none;
+    background: url("/images/bg-black.png") repeat scroll 0 0 transparent;
+}
+
+#home_description_text a:visited
+{
+    text-decoration: none;
+}
+
+#home_web_links{
+    height: 288px;
+}
+
+/* Bio */
+.my_biography_text p{
+    text-align: justify;
+}
+
+.my_biography_text a{
+    font: inherit;
+}

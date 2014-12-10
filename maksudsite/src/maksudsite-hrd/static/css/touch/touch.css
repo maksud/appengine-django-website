@@ -1,0 +1,79 @@
+@import url(reset.css);
+@import url(typography.css);
+@import url(pages.css);
+
+body{
+    background: #F2F2F2;
+    color: #222;
+}
+
+em { color: #000; }
+
+#header {
+	background: #c9c9c9;
+}
+#header-top {
+	padding: 5px;
+}
+
+h3.pagename{
+	padding-top: 5px;
+}
+
+#header .contact{
+	padding: 2px;
+	float: right;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#nav_main
+{
+	height:30px;
+	color:#111;
+}
+#nav_main li
+{
+	float:left;
+	width:25%;
+	margin:2px 0 0 -1px;
+	/*background:#f3f3f3;*/
+	background: #d9d9d9;
+	
+	border:1px solid #e3e3e3;
+	border-width:0 0 1px 1px;
+	text-align:center;
+}
+#nav_main li.first
+{
+	border-left:none;
+}
+#nav_main li.active
+{
+	z-index:10;
+	margin-top:0;
+	margin-left:-2px;
+	background:#fff;
+	border-width:1px;
+	border-bottom:1px solid #fff;
+	font-weight:bold;
+}
+#nav_main li.last.active
+{
+	border-right:none;
+}
+#nav_main li a
+{
+	display:block;
+	padding:6px 0 7px;
+}
+#nav_main li.active a
+{
+	padding-top:7px;
+	color:#000;
+}
+
+#footer
+{
+	background: #c9c9c9;
+}

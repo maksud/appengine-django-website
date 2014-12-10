@@ -1,0 +1,144 @@
+/*menu.css*/
+#header a {
+	border: 0;
+}
+
+#ms_h_menu ul {
+	list-style: none;
+	height: 36px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#ms_h_menu ul li {
+	display: inline;
+	float: left;
+	text-indent: -9999px;
+}
+
+#ms_h_menu ul li a {
+	display: block;
+	float: left;
+	height: 36px;
+	text-decoration: none;
+	background-image: url("/images/nav-menu.png");
+	-webkit-transition: all 0.5s;
+	-transition: all 0.5s;
+	-moz-transform: rotate(-4deg);
+	-webkit-transform: rotate(-4deg);
+	-webkit-transition: -webkit-transform 0.1s ease-in;
+}
+
+#ms_h_menu ul li a:hover,#ms_h_menu ul li a:focus {
+	z-index: 100;
+	position: relative; /* Make the z-index work in Safari */
+	-moz-transform: rotate(4deg) scale(1.2);
+	-webkit-transform: rotate(4deg) scale(1.2);
+}
+
+#ms_h_menu ul li a.active {
+     -moz-transform:rotate(4deg) scale(1.2);
+    -webkit-transform:rotate(4deg) scale(1.2);
+}
+
+#ms_h_research {
+	width: 87px;
+}
+
+#ms_h_research a {
+	width: 87px;
+	background-position: -5px -72px;
+}
+
+#ms_h_research a.active {
+	background-position: -5px 0px;
+}
+
+#ms_h_research a:hover,#ms_h_research a:hover {
+	background-position: -5px -36px;
+}
+
+#ms_h_bio {
+	width: 36px;
+}
+
+#ms_h_bio a {
+	width: 36px;
+	background-position: -92px -72px;
+}
+
+#ms_h_bio a.active {
+	background-position: -92px 0px;
+}
+
+#ms_h_bio a:hover,#ms_h_bio a:hover {
+	background-position: -92px -36px;
+}
+
+#ms_h_academics {
+	width: 100px;
+}
+
+#ms_h_academics a {
+	width: 100px;
+	background-position: -128px -72px;
+}
+
+#ms_h_academics a.active {
+	background-position: -128px 0px;
+}
+
+#ms_h_academics a:hover,#ms_h_academics a:hover {
+	background-position: -128px -36px;
+}
+
+#ms_h_experience {
+	width: 104px;
+}
+
+#ms_h_experience a {
+	width: 104px;
+	background-position: -228px -72px;
+}
+
+#ms_h_experience a.active {
+	background-position: -228px 0px;
+}
+
+#ms_h_experience a:hover,#ms_h_experience a:hover {
+	background-position: -228px -36px;
+}
+
+#ms_h_gallery {
+	width: 68px;
+}
+
+#ms_h_gallery a {
+	width: 68px;
+	background-position: -332px -72px;
+}
+
+#ms_h_gallery a.active {
+	background-position: -332px 0px;
+}
+
+#ms_h_gallery a:hover,#ms_h_gallery a:hover {
+	background-position: -332px -36px;
+}
+
+#ms_h_contact {
+	width: 74px;
+}
+
+#ms_h_contact a {
+	width: 74px;
+	background-position: -400px -72px;
+}
+
+#ms_h_contact a.active {
+	background-position: -400px 0px;
+}
+
+#ms_h_contact a:hover,#ms_h_contact a:hover {
+	background-position: -400px -36px;
+}
