@@ -1,20 +1,29 @@
 application: maksudsite-hrd
-version: 14
+version: 18
 runtime: python27
 api_version: 1
 threadsafe: false
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
 
 builtins:
 - remote_api: on
 
 inbound_services:
 - warmup
+- mail
 
 handlers:
 - url: /_ah/queue/deferred
   script: djangoappengine/deferred/handler.py
   login: admin
-  
+
+- url: /_ah/mail/.+
+  script: handle_incoming_email.app
+  login: admin
+
 - url: /media/admin
   static_dir: django/contrib/admin/media
   expiration: '0'
@@ -22,32 +31,38 @@ handlers:
 - url: /media
   static_dir: media/
   expiration: '365d'
-  
+
 - url: /static
   static_dir: static
 
 - url: /images
   static_dir: static/images
-  
+
+- url: /img
+  static_dir: static/img
+
 - url: /css
   static_dir: static/css
-  
+
 - url: /js
   static_dir: static/js
-  
+
 - url: /fonts
   static_dir: static/fonts
-  
+
 - url: /resources
   static_dir: static/resources
 
 - url: /admin/.*
-  script: djangoappengine/main/main.py
   login: admin
+  script: djangoappengine/main/main.py
 
 - url: /myadmin/.*
   login: admin
   script: djangoappengine/main/main.py
+
+- url: /upload/.*
+  script: maxsite.admin.cms.cms.app
 
 - url: /.*
   script: djangoappengine/main/main.py
