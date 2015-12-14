@@ -1,0 +1,84 @@
+{% extends 'layout/layout.html' %}
+{% load crispy_forms_tags %}
+{% load maxhelper_filter %}
+
+{% block title %}
+Maksud's World - News
+{% endblock %}
+                            
+{% block css %}
+<link rel="stylesheet" href="/static/vertical-timeline/css/style.css"> <!-- Resource style -->
+{% endblock %}
+
+{% block endmorejs %}
+<script src="/static/vertical-timeline/js/modernizr.js"></script> <!-- Modernizr -->
+<script src="/static/vertical-timeline/js/timeline.js"></script> <!-- Resource jQuery -->
+{% endblock %}
+                            
+{% block contents %}
+<div class="row">
+{% if logged %}
+    <div class="col-md-12">
+        <div class="my-page-header">
+        <center><a title="All News" rel="contact" class="url tk-akuta" href="/news/">All News</a> &bull; <a title="Add News" rel="contact" class="url tk-akuta" href="/news/update/">Add News</a></center>
+        </div>
+    </div>
+{% endif %}
+    <div id="wrap" class="col-md-12">
+{% if allnewsFALSE %}
+{% for field in allnews %}
+        <div class="block is-key-event">
+            <p class="block-time published-time"><time title="3.21pm BST" datetime="{{field.when}}" data-relativeformat="med" class=" js-timestamp">{{field.when|date:"M d"}}</time><span class="block-time__absolute">{{field.when|date:"Y"}}</span> </p>
+            {% if field.title %}
+            <h2 class="block-title">{{field.title|safe}}</h2>
+            {% endif %}
+            <div class="block-elements">
+{{field.content|safe}}
+            </div>
+            <div class="block-share block-share--liveblog " data-link-name="block share">
+{% if logged %}
+                <a target="_blank" title="Edit" class="tooltips rounded-icon block-share__item block-share__item--facebook js-blockshare-link" href="/news/update?id={{field.id}}" data-original-title="Update Entry"><i class="i"></i></a>
+{% endif %}
+                <!-- <a class="rounded-icon block-share__item block-share__item--facebook js-blockshare-link" href="" target="_blank" data-link-name="social facebook"> <i class="i"></i><span class="u-h">Facebook</span> </a> -->
+                <!-- <a class="rounded-icon block-share__item block-share__item--twitter js-blockshare-link" href="" target="_blank" data-link-name="social twitter"> <i class="i"></i><span class="u-h">Twitter</span> </a> -->
+                <!-- <a class="rounded-icon block-share__item block-share__item--gplus js-blockshare-link" href="" target="_blank" data-link-name="social gplus"> <i class="i"></i><span class="u-h">Google plus</span> </a> -->
+            </div>
+        </div>
+{% endfor %}
+{% endif %}
+    </div>
+</div>
+
+<div class="row">
+<section id="cd-timeline" class="cd-container">
+{% if allnews %}
+{% for field in allnews %}
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
+{% ifequal field.kind "Paper" %}
+                <img src="/static/vertical-timeline/img/cd-icon-movie.svg" alt="Movie">
+{% endifequal %}
+{% ifequal field.kind "Picture" %}
+                <img src="/static/vertical-timeline/img/cd-icon-picture.svg" alt="Picture">
+{% endifequal %}
+{% ifequal field.kind "Location" %}
+                <img src="/static/vertical-timeline/img/cd-icon-location.svg" alt="Location">
+{% endifequal %}
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+{% if field.title %}
+                <h2>{{field.title}}</h2>
+{% endif %}
+                <p>{{field.content|safe}}</p>
+{% if logged %}
+                <a target="_blank" title="Edit" class="tooltips rounded-icon block-share__item block-share__item--facebook js-blockshare-link" href="/news/update?id={{field.id}}" data-original-title="Update Entry"><i class="i"></i></a>
+{% endif %}
+                <!-- <a href="#0" class="cd-read-more">Read more</a> -->
+                <span class="cd-date"><b>{{field.when|date:"F d, Y"}}</b></span>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
+{% endfor %}
+{% endif %}
+    </section> <!-- cd-timeline -->
+</div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'layout/layout.html' %}
+{% load crispy_forms_tags %}
+{% load maxhelper_filter %}
+
+{% block title %}
+Maksud's World - Publications List
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="/css/uni.form/uni-form.css" type="text/css" />
+<link rel="stylesheet" href="/css/uni.form/default.uni-form.css" type="text/css" />
+<link rel="stylesheet" href="/css/documents.css" type="text/css" />
+<link rel="stylesheet" href="/css/tablesorter.style.css" type="text/css" />
+<link rel="stylesheet" href="/css/publications.css" type="text/css" />
+{% endblock %}
+
+{% block js %}
+<script src="/js/uni-form.jquery.js" type="text/javascript"></script>
+<script src="/js/jquery.tablesorter.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+<script>
+$(document).ready(function() 
+{
+    $('form.uniForm').uniform();
+    $(".tooltips").tooltip();
+    $('#pub-grid').mixItUp();
+
+    $('div.pubmain').on('click', 
+        function(){
+            var $this = $(this), $item = $this.closest(".item");
+            $item.find('div.pubdetails').slideToggle(function(){
+                $this.children("i").toggleClass('icon-collapse-alt icon-expand-alt');
+            },
+            function(){
+                $this.children("i").toggleClass('icon-expand-alt icon-collapse-alt');
+            });
+    });
+});
+</script>
+{% endblock %}
+
+{% block contents %}
+    <div class="row">
+{% if logged %}
+        <div class="col-md-12">
+            <div class="my-page-header">
+            <center>
+                <a title="All Publications" rel="contact" class="url tk-akuta" href="/publications/">All Publications</a>
+                 &bull; 
+                 <a title="Add Publication" rel="contact" class="url tk-akuta" href="/publications/update/">Add Publication</a>
+             </center>
+            </div>
+    </div>
+{% endif  %}
+
+    <div class="controls col-md-12">
+      <label>Filter:</label>
+      <button class="filter" data-filter="all">All</button>
+      <button class="filter" data-filter=".Book">Book</button>
+      <button class="filter" data-filter=".Journal">Journal</button>
+      <button class="filter" data-filter=".Conference">Conference</button>
+      <button class="filter" data-filter=".Submitted">Submitted</button>
+      <button class="filter" data-filter=".In-Preparation">In-Preparation</button>
+      <button class="filter" data-filter=".Others">Others</button>
+      <label>Year:</label>
+      <button class="sort" data-sort="year:asc"><i class="fa fa-sort-numeric-asc"></i></button>
+      <button class="sort" data-sort="year:desc"><i class="fa fa-sort-numeric-desc"></i></button>
+    </div>
+
+        <div id="pub-grid" class="col-md-12">
+            <div class="pitems">
+
+{% if allpapers %}{% for field in allpapers %}
+                <div data-year="{{field.seq}}" class="item mix {{field.pub_type}}  mix_all">
+                    <div class="pubmain"><div class="pubassets">
+                            <a title="Bibtex" class="pubcollapse" href="#"><i class="fa fa-expand"></i></a>
+                            {% if logged %}
+                            <a title="" class="tooltips" href="/publications/update?id={{field.id}}" data-original-title="Update Entry"><i class="fa fa-edit"></i></a>
+                            {% endif %}
+                            {% if field.link %}
+                            <a target="_blank" title="" class="tooltips" href="{{field.link|safe}}" data-original-title="External Link"><i class="fa fa-external-link"></i></a>
+                            {% endif %}
+                            {% if field.pdf %}
+                            <a data-original-title="Download" target="_blank" title="" class="tooltips" href="{{field.pdf|safe}}"><i class="fa fa-cloud-download"></i></a>
+                            {% endif %}
+                        </div>
+                        <h4 class="pubtitle"><i>{{field.serial|safe}}.</i> {{field.title|safe}}</h4>
+                        <div class="pubauthor">{{field.authors|safe}}</div>
+                        <div class="pubcite">
+
+                        {% ifequal field.pub_type "Book" %}<span class="label label-danger">Book #{{field.sequence}}</span>{% endifequal %}
+                        {% ifequal field.pub_type "Journal" %}<span class="label label-success">Journal #{{field.sequence}}</span>{% endifequal %}
+                        {% ifequal field.pub_type "Conference" %}<span class="label label-primary">Conference #{{field.sequence}}</span>{% endifequal %}
+                        {% ifequal field.pub_type "Technical Report" %}<span class="label label-report">Technical Report #{{field.sequence}}</span>{% endifequal %}
+                        {% ifequal field.pub_type "Submitted" %}<span class="label label-warning">Submitted #{{field.sequence}}</span>{% endifequal %}
+                        {% ifequal field.pub_type "In-Preparation" %}<span class="label label-info">In-Preparation #{{field.sequence}}</span>{% endifequal %}                        
+                        {% ifequal field.pub_type "Others" %}<span class="label label-default">Others #{{field.sequence}}</span>{% endifequal %}
+                        {{field.journal|safe}}, {{field.year}}.
+                        </div>
+                    </div>
+                    <div class="pubdetails">
+                        <h4>BibTeX</h4>
+                        <pre class="prettyprint">{{field.bibtex}}</pre>
+                </div>
+            </div>
+    {% endfor %}{% endif %}
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+{% endblock %}
