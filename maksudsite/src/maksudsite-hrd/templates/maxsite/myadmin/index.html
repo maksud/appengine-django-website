@@ -9,8 +9,10 @@ Maksud's World - Dashboard
 {% endblock %}
 
 {% block contents %}
-
-<div id="index_page" class="container_16">
+<div id="main-content">
+    <div id="index_page" class="row">
+        <div class="col-md-12">
+            <center><h1>Dashboard</h1></center>
     <table id="timingstats" cellspacing="0" class="data users-table">
         <tbody>
             <tr>
@@ -52,13 +54,11 @@ Maksud's World - Dashboard
             <tr>
                 <td></td>
                 <td></td>
-                <td class="num"><a class="url" href="/myadmin/dashboard/flush_all">Flush Memcache</a></td>
+                <td class="num"><a class="url" href="/myadmin/dashboard/index_documents?p=/myadmin">Index Documents</a><a class="url" href="/myadmin/dashboard/reset_django?p=/myadmin">Reset Django Password</a><a class="url" href="/myadmin/dashboard/flush_all?p=/myadmin">Flush Memcache</a></td>
             </tr>
         </tbody>
-    </table>
-
-
+    </table>  
+        </div>
+    </div>
 </div>
-
-
 {% endblock %}

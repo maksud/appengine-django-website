@@ -1,125 +1,135 @@
-body {
-	font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
-	font-size: 16px;
-	line-height: 1.5em;
+@import url(font.css);
+
+
+body {font-family: 'Alegreya Sans', 'Merriweather', "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;}
+.sherif {font-family: 'Merriweather', "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;}
+.sans {font-family: 'Alegreya Sans', "Myriad Pro", Skia, Myriad, Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;}
+.mono {font-family: 'Consolas', 'Monaco', 'andale mono', 'lucida console', monospace;}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Alegreya Sans', "Myriad Pro", Skia, Myriad, Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
 }
 
-/* FIX Headers */
-h4,h5 {
-	margin-bottom: 0.5em;
-}
-
-h1,h2,h3,h4,h5,h6 {
-	font-family: Skia, "Myriad Pro", Myriad, Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #222;
-}
-
-h1,h2,h3 {
-	text-shadow: 0px 1px 1px #555;
-}
+h1.shadow, h2.shadow, h3.shadow { text-shadow: 1px 1px 1px #555; }
 
 hr {
-	background: transparent;
-	color: #000;
-	border-color: rgba(0, 0, 0, 0.5);
-	border-style: none none solid none;
-	height: 0px;
-	clear: both;
-	display: block;
-	margin-top: 0;
-	margin-bottom: 23px;
+    background: transparent;
+    color: #000;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.5);
+    border-style: none none solid none;
+    height: 0px;
+    clear: both;
+    display: block;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
 }
 
 hr.weight3 {
-	margin-bottom: 21px;
-	border-width: 3px;
+    margin-bottom: 21px;
+    border-width: 3px;
 }
 
 hr.weight5 {
-	margin-bottom: 19px;
-	border-width: 5px;
+    margin-bottom: 19px;
+    border-width: 5px;
 }
 
 .ul25 {
-	background: url("/images/ul25.png") repeat-x scroll 0 2px transparent;
+    background: url("/images/ul25.png") repeat-x scroll 0 2px transparent;
 }
 
 .title {
-	font-weight: bold;
-	line-height: 23px;
-	text-align: justify;
-	border-bottom: 1px solid #aaa;
-	margin-bottom: 8px;
+    font-weight: bold;
+    line-height: 23px;
+    /*text-align: justify;*/
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 8px;
 }
 
 .bold {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 a {
-	color: #2200c1;
-	padding-left: 1px;
-	padding-right: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	font-family: "AUdimat", "AUdimatRegular", Skia, Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica,
-		Arial, sans-serif;
-	color: #2200c1;
+    color: #2200c1;
+    font-weight: normal;
 }
 
 a:visited {
-	color: #AD4747;
+    color: #AD4747;
 }
 
-a:hover,a:focus {
-	color: #333;
-	/*background-color: #f2ff00;*/
+a:hover, a:focus {
+    color: #ED1C24; 
+    text-decoration: none;
 }
 
-p a,p a:visited {
-	border-bottom: 1px dotted #AAAAAA;
-	text-decoration: none;
+a.link {
+    background-position: 0 92%; 
+    background-repeat: repeat-x; 
+    background-size: 2px 2px; 
+    color: #403b3f; 
+    cursor: pointer; 
+    text-decoration: none; 
+    text-shadow: 3px 0 #ffffff, 2px 0 #ffffff, 1px 0 #ffffff, -1px 0 #ffffff, -2px 0 #ffffff, -3px 0 #ffffff; 
+    background-image: linear-gradient(to bottom, #1fda9a 0%, #1fda9a 100%);
 }
 
-p a:hover,p a:focus {
-	border-bottom: 1px solid;
+p a, p a:visited {
+    border-bottom: 1px dotted #AAAAAA;
+    text-decoration: none;
+    font-weight: normal;
 }
 
-em,b,strong,dfn {
-	color: #000;
+p a:hover, p a:focus {
+    color: #1fda9a;
+    border-bottom: 2px solid;
+    text-decoration:  none;
 }
 
-black {
-	color: #000;
+.black {
+    color: #000;
 }
 
 .smallfont {
-	font-size: 12px;
+    font-size: 12px;
 }
 
-p {
-	text-align: justify;
+.justify {
+    text-align: justify;  
 }
 
 .rightalign {
-	text-align: right;
+    text-align: right;
 }
 
-.sherif {
-	font-family: "Hoefler Text", Constantia, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+.text-18 {
+    font-size: 18px;
+    line-height: 1.5em;
 }
 
-.sans {
-	font-family: Skia, Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+em {
+    font-style: italic;
 }
 
-.mono {
-	font-family: 'Consolas', 'Monaco', 'andale mono', 'lucida console', monospace;
+
+h1 {
+    font-size: 2.25em;
 }
 
-.text-18
-{
-	font-size: 18px;
-	line-height: 1.5em;
+h2 {
+    font-size: 1.75em;
+}
+
+h1, h2 {
+    margin-bottom: 0.25em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+h3, h4, h5, h6{
+    margin-bottom: 0.1em;
 }

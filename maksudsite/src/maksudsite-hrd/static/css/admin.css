@@ -149,3 +149,9 @@ ul.tools li a {
 	color: #AAAAAA;
 	text-decoration: none;
 }
+
+#cke_id_content
+{
+	width:  706px;
+	float:  left;
+}

@@ -8,6 +8,8 @@ class ContentsForm(forms.Form):
     language = forms.CharField(label="Language", required=False)
     url = forms.CharField(label="Url", required=False)
     content = forms.CharField(label="Contents", required=True, widget=forms.Textarea())
+    css = forms.CharField(label="CSS", required=False, widget=forms.Textarea())
+    js = forms.CharField(label="JavaScript", required=False, widget=forms.Textarea())
 
 class FontsForm(forms.Form):
     font_family = forms.CharField (label="Font Family", max_length=250, required=True)
@@ -17,10 +19,5 @@ class FontsForm(forms.Form):
     
 class TemplateForm(forms.ModelForm):
     id = forms.CharField(label="id", widget=forms.HiddenInput(), required=False)
-#    module = forms.CharField(label="Module", required=True)
-#    view = forms.CharField(label="View", required=True)
-#    pagename = forms.CharField(label="Pagename", required=False)
-#    caption = forms.CharField(label="Caption", required=False)
-#    content = forms.CharField(label="Content", required=True, widget=forms.Textarea())
     class Meta:
         model = AppTemplate

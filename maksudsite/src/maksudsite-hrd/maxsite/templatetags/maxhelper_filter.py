@@ -15,7 +15,8 @@ def md5(value):
 
 @register.simple_tag
 def contents_tile(tile_id):
-    return get_content_string_by_tile(str(tile_id))
+    content, content_id = get_content_string_by_tile(str(tile_id))
+    return content
 
 @register.simple_tag
 def contents_tile_mv(module, view):

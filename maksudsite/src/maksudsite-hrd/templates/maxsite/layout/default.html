@@ -6,9 +6,11 @@ Maksud's World - {{contents.title}}
 {% endblock %}
 
 {% block css %}
+{% if  contents.css %}{{ contents.css|safe }}{% endif %}
 {% endblock %}
 
 {% block js %}
+{% if  contents.js %}{{ contents.js|safe }}{% endif %}
 {% endblock %}
 
 {% block contents %}

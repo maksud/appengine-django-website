@@ -2,11 +2,12 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from maxsite.admin.forms import TemplateForm
 from maxsite.models import AppTemplate
+from datetime import date
 
 def index(request):
     form = TemplateForm()
     templates = AppTemplate.objects.all()
-    response_dictionary = {"contact": {"pagename": "Template", "h_template":"active"}, 'form': form, 'templates': templates}
+    response_dictionary = {"contents": {"pagename": "Template", "h_templates":"active", "year": date.today().year}, 'form': form, 'templates': templates}
     return render_to_response('myadmin/template-admin.html', response_dictionary, context_instance=RequestContext(request))
 
 def update(request):
@@ -41,6 +42,6 @@ def update(request):
                 'content': template.content}
             form = TemplateForm(data)
             
-    response_dictionary = {"contact": {"pagename": "Template", "h_template":"active"}, 'form': form}
+    response_dictionary = {"contents": {"pagename": "Template", "h_templates":"active", "year": date.today().year}, 'form': form}
     return render_to_response('myadmin/template-admin.html', response_dictionary, context_instance=RequestContext(request))
 

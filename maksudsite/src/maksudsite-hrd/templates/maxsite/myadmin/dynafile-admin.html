@@ -1,5 +1,5 @@
 {% extends 'layout/admin-layout.html' %}
-{% load uni_form_tags %}
+{% load crispy_forms_tags %}
 {% load maxhelper_filter %}
 
 
@@ -25,9 +25,9 @@ Maksud's World - Dynamic Text Files
         <form method="POST" action="{% url admin_dynafile_update %}" enctype="multipart/form-data" class="uniForm">
             <fieldset class="inlineLabels">
                 {% csrf_token %}
-                {{ textForm|as_uni_form }}
+                {{ textForm|crispy }}
                 <div class="form_block">
-                    <div class="block">
+                    <div class="block-submit">
                         <input  class="fat-blue" type="submit" value="Submit" />
                     </div>
                     <div class="clear" ></div>
@@ -40,9 +40,9 @@ Maksud's World - Dynamic Text Files
         <form method="POST" action="{% url admin_dynafile_upload %}" enctype="multipart/form-data" class="uniForm">
             <fieldset class="inlineLabels">
                 {% csrf_token %}
-                {{ uploadForm|as_uni_form }}
+                {{ uploadForm|crispy }}
                 <div class="form_block">
-                    <div class="block">
+                    <div class="block-submit">
                         <input  class="fat-blue" type="submit" value="Submit" />
                     </div>
                     <div class="clear" ></div>
@@ -59,9 +59,8 @@ Maksud's World - Dynamic Text Files
                 <tbody>
                     <tr>
                         <th class="list-title">Document</th>
-                        <th class="num">Type</th>
+                        <th class="list-title">Type</th>
                         <th class="num">View</th>                                             
-                        <th></th>
                     </tr>
                     {% for field in dynafiles %}
                     <tr>
@@ -70,9 +69,12 @@ Maksud's World - Dynamic Text Files
                                 <a title="{{field.name}}" rel="contact" class="url" href="{% url admin_dynafile_update %}?id={{field.id}}"><img src="/images/icons/file.png" class="photo fn" alt="{{field.name}}">{{field.name}}</a>
                             </h4>
                         </td>
-                        <td class="num follows">{{field.content_type}}</td>
-                        <td class="num follows"><a title="{{field.name}}" rel="contact" class="url" href="/dynafile/{{field.name}}">View</a></td>
-                        <td class="follow"></td>
+                        <td class="list-title follows">{{field.content_type}}</td>
+                        <td class="num follows">
+                            <h4 class="vcard">
+                                <a title="{{field.name}}" rel="contact" class="url" href="/dynafile/{{field.name}}">View</a>
+                            </h4>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

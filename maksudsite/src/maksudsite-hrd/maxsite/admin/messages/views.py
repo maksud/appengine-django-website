@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from maxsite.contact.forms import ContactForm
 from maxsite.models import AppMessage, get_messages
-
+from datetime import date
 
 def index(request):
     if request.method == "POST":
@@ -23,23 +23,23 @@ def index(request):
         contacts = get_messages(False)
         form = ContactForm()
 
-    response_dictionary = {"contact": {"pagename": "Contact Me", "h_contact":"active"}, 'form': form, 'messages': contacts}
+    response_dictionary = {"contents": {"pagename": "Contact Me", "h_messages":"active", "year": date.today().year}, 'form': form, 'messages': contacts}
     return render_to_response('myadmin/contact-admin.html', response_dictionary, context_instance=RequestContext(request))   
 
 def approve(request):
     id = request.GET.get('id')
     if id:
-        message = AppMessage.objects.filter(id=long(id))
+        message = AppMessage.objects.get(id=long(id))
         if message:
             message.accepted = True
-            message.put()
+            message.save()
 
     return redirect("/myadmin/messages")
 
 def delete(request):
     id = request.GET.get('id')
     if id:
-        message = AppMessage.objects.filter(id=long(id))
+        message = AppMessage.objects.get(id=long(id))
         if message:
             message.delete()
 

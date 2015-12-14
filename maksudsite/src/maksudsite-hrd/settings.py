@@ -7,6 +7,7 @@ import os, sys, re
 
 
 DEBUG = True
+# DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
@@ -44,7 +45,8 @@ INSTALLED_APPS = (
     'autoload',
     'dbindexer',
     'permission_backend_nonrel',
-	'uni_form',
+    'crispy_forms',
+    'crispy_forms_foundation',
     'apps.filetransfers',
     'maxsite',
 
@@ -52,10 +54,12 @@ INSTALLED_APPS = (
     'djangoappengine',
 )
 
+CRISPY_TEMPLATE_PACK = 'uni_form'
+# CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 MIDDLEWARE_CLASSES = (
     # This loads the index definitions, so it has to come first
     'autoload.middleware.AutoloadMiddleware',
-
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -78,10 +82,14 @@ TEMPLATE_DIRS = (
     os.path.join(ROOT_PATH, 'templates/maxsite')
 )
 
-DYN_TEMPLATE_MAP = {
-    'HTTP_USER_AGENT': {
-        re.compile('iPhone'): (os.path.join(ROOT_PATH,'templates/touch'),)
-    }
-}
+# DYN_TEMPLATE_MAP = {
+#     'HTTP_USER_AGENT': {
+#         re.compile('iPhone'): (os.path.join(ROOT_PATH,'templates/touch'),)
+#     }
+# }
+
+GAE_SETTINGS_MODULES = (
+    'maxsite_index_settings',
+)
 
 ROOT_URLCONF = 'urls'

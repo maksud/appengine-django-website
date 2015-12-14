@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from maxsite.admin.documents.forms import DocumentUploadForm
 from maxsite.models import AppDocument, AppBlobStore
+from datetime import date
 import logging
 import urllib
 
@@ -18,7 +19,6 @@ def index(request):
             else:
                 document = AppDocument()
                 
-                
             if form.cleaned_data["document"]:
                 blobstore = AppBlobStore()
                 blobstore.fill_from_form(form.cleaned_data["document"])
@@ -31,8 +31,6 @@ def index(request):
 
             return HttpResponseRedirect(view_url)
         return HttpResponseRedirect(view_url)
-
-
     else:
         id = request.GET.get('id')
         if id:
@@ -45,7 +43,7 @@ def index(request):
         else:
             form = DocumentUploadForm()
 
-    response_dictionary = {"contact": {"pagename": "Documents"}, 'url_action': view_url, 'form': form, 'documents': AppDocument.objects.all()}
+    response_dictionary = {"contents": {"pagename": "Documents", "h_documents":"active", "year": date.today().year}, 'url_action': view_url, 'form': form, 'documents': AppDocument.objects.all()}
     return render_to_response('myadmin/document-admin.html', response_dictionary, context_instance=RequestContext(request))
 
 def delete(request):

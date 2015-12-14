@@ -4,6 +4,7 @@ from django.template import RequestContext
 from google.appengine.ext import db
 from maxsite.admin.dynafile.forms import DynaTextForm, DynaUploadForm
 from maxsite.models import AppTextFile, get_static_file
+from datetime import date
 
 def index(request):
 #    contacts = StaticContent.all().fetch(100)
@@ -11,7 +12,7 @@ def index(request):
     uploadForm = DynaUploadForm()
     textForm = DynaTextForm()
 
-    response_dictionary = {"contact": {"pagename": "Documents", "h_contact":"active"}, 'uploadForm': uploadForm, 'textForm': textForm, 'dynafiles': contacts}
+    response_dictionary = {"contents": {"pagename": "Documents", "h_dynafiles":"active", "year": date.today().year}, 'uploadForm': uploadForm, 'textForm': textForm, 'dynafiles': contacts}
     return render_to_response('myadmin/dynafile-admin.html', response_dictionary, context_instance=RequestContext(request))
 
 def upload(request):
@@ -71,7 +72,7 @@ def update(request):
         else:
             form = DynaTextForm()
 
-    response_dictionary = {"contact": {"pagename": "Template", "h_dynafile":"active"},'uploadForm': DynaUploadForm(), 'textForm': form, 'dynafiles': AppTextFile.objects.all()}
+    response_dictionary = {"contents": {"pagename": "Template", "h_dynafiles":"active", "year": date.today().year},'uploadForm': DynaUploadForm(), 'textForm': form, 'dynafiles': AppTextFile.objects.all()}
     return render_to_response('myadmin/dynafile-admin.html', response_dictionary, context_instance=RequestContext(request))
 
 def delete(request):

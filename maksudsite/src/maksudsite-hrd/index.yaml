@@ -21,8 +21,63 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
+- kind: maxsite_appmessage
+  properties:
+  - name: __key__
+    direction: desc
+
+- kind: maxsite_appmessage
+  properties:
+  - name: accepted
+  - name: name
+
 - kind: maxsite_appview
   properties:
   - name: module_id
   - name: name
   - name: url
+
+- kind: maxsite_conference
+  properties:
+  - name: is_favorite
+  - name: name
+
+- kind: maxsite_conference
+  properties:
+  - name: long_name
+  - name: name
+
+- kind: maxsite_conferencecategory
+  properties:
+  - name: __key__
+    direction: desc
+
+- kind: maxsite_publication
+  properties:
+  - name: pub_type
+  - name: name
+
+- kind: maxsite_publication
+  properties:
+  - name: pub_type
+  - name: serial
+    direction: desc
+
+- kind: maxsite_publication
+  properties:
+  - name: pub_type
+  - name: year
+    direction: desc
+
+- kind: maxsite_publication
+  properties:
+  - name: serial
+  - name: year
+    direction: desc
+
+- kind: maxsite_publication
+  properties:
+  - name: serial
+    direction: desc
+  - name: year
+    direction: desc

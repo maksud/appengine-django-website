@@ -1,5 +1,5 @@
 {% extends 'layout/admin-layout.html' %}
-{% load uni_form_tags %}
+{% load crispy_forms_tags %}
 {% load maxhelper_filter %}
 
 
@@ -18,8 +18,8 @@ Maksud's World - Biography
 {% endblock %}
 
 {% block contents %}
-<div class="container_16">
-    <div class="grid_16">
+<div class="row">
+    <div class="col-md-12">
         <div class="contentSection padded30" id="comments">
             <h4><b>{{messages|length}}</b> Messages</h4>
             <div class="line"></div>
@@ -43,22 +43,6 @@ Maksud's World - Biography
             </ol>
         </div>
     </div>
-
-    <!--    <div class="grid_16">
-            <div class="contentSection padded30">
-                <h4>Please leave a message:</h4>
-                <form method="POST" action="{% url admin_messages %}" enctype="multipart/form-data" class="uniForm">
-                    <fieldset class="inlineLabels">
-                        {% csrf_token %}
-                        {{ form|as_uni_form }}
-                        <div class="form_block">
-                            <input type="submit" value="submit">
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-        </div>-->
-
     <div class="clear"> </div>
 </div>
 {% endblock %}

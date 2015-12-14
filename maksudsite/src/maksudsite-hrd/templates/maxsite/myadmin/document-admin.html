@@ -1,5 +1,5 @@
 {% extends 'layout/admin-layout.html' %}
-{% load uni_form_tags %}
+{% load crispy_forms_tags %}
 {% load maxhelper_filter %}
 
 
@@ -25,10 +25,10 @@ Maksud's World - Document Management
         <form method="POST" action="{{ url_action }}" enctype="multipart/form-data" class="uniForm">
             <fieldset class="inlineLabels">
                 {% csrf_token %}
-                {{ form|as_uni_form }}    
+                {{ form|crispy }}    
                      
                 <div class="form_block">
-                    <div class="block">
+                    <div class="block-submit">
                         <input  class="fat-blue" type="submit" value="Submit" />
                     </div>
                     <div class="clear" ></div>
@@ -38,7 +38,6 @@ Maksud's World - Document Management
     </div>
 
     <div id="wrap" class="grid_16">
-
         <div id="main">
             {% if documents %}
             <h3>Uploaded Documents</h3>
@@ -46,27 +45,23 @@ Maksud's World - Document Management
                 <tbody>
                     <tr>
                         <th class="list-title">Document</th>
-                        <th class="num">Title</th>
+                        <th class="list-title">Title</th>
                         <th class="num">Size</th>
-                        <th class="num">Type</th>
+                        <th class="list-title">Type</th>
                         <th class="num">View</th>                                             
-                        <th></th>
                     </tr>
                     {% for field in documents %}
                     <tr>
                         <td class="user">
                             <h4 class="vcard">
                                 <a title="{{field.name}}" rel="contact" class="url" href="{% url admin_documents_update %}?id={{field.id}}"><img src="/images/icons/file.png" class="photo fn" alt="{{field.name}}">{{field.name}}</a>
-                                <span class="user-meta">
-                					Uploaded: {{field.date|date:"F j, Y h:i A"}}
-                                </span>
+                                <span class="user-meta">Uploaded: {{field.date}}</span>
                             </h4>
                         </td>
-                        <td class="num followers">{{field.title}}</td>
-                        <td class="num screenshots">{{field.content_length}}</td>
-                        <td class="num follows">{{field.content_type}}</td>
+                        <td class="list-title">{{field.title}}</td>
+                        <td class="num">{{field.content_length}}</td>
+                        <td class="list-title follows">{{field.content_type}}</td>
                         <td class="num follows"><a title="{{field.name}}" rel="contact" class="url" href="/document/{{field.name}}">View</a></td>
-                        <td class="follow"></td>
                     </tr>
                     {% endfor %}
                 </tbody>
